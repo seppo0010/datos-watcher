@@ -17,7 +17,7 @@ jobs:
       - name: Install pipenv
         run: pip install pipenv
       - name: Install dependencies
-        run: pipenv
+        run: pipenv install
       - name: Run script
         run: pipenv run python main.py
         env:
