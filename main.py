@@ -10,7 +10,7 @@ CHAT_ID = os.environ['TELEGRAM_CHAT_ID']
 BASE_URL = 'https://datos.gob.ar/'
 now = datetime.now()
 
-url = f'{BASE_URL}/api/3/action/recently_changed_packages_activity_list'
+url = f'{BASE_URL}api/3/action/recently_changed_packages_activity_list'
 data = requests.get(url).raise_for_status().json()
 
 changes = []
@@ -26,7 +26,7 @@ def format_change(change):
         'deleted package': 'Paquete borrado',
     }.get(change['activity_type'], change['activity_type'])
 
-    return f'{activity_type}: {change["data"]["package"]["title"]}\nhttps://datos.gob.ar/dataset/{change["data"]["package"]["name"]}'
+    return f'{activity_type}: {change["data"]["package"]["title"]}\n{BASE_URL}dataset/{change["data"]["package"]["name"]}'
 
 message = '\n'.join(format_change(change) for change in changes)
 print(f'Cambios del último día:\n{message}')
