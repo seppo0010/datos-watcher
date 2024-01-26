@@ -11,7 +11,7 @@ BASE_URL = 'https://datos.gob.ar/'
 now = datetime.now()
 
 url = f'{BASE_URL}/api/3/action/recently_changed_packages_activity_list'
-data = requests.get(url).json()
+data = requests.get(url).raise_for_status().json()
 
 changes = []
 for activity in data['result']:
