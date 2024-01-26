@@ -8,6 +8,7 @@ on:
 jobs:
   setup-versions-from-manifest:
     name: Run cron
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
